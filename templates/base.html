@@ -12,11 +12,20 @@
     <h1><a href="{% url 'home'  %}">NurbekDev Blogi</a></h1></div>
       <div class="nav-right">
           <a href="{% url 'post_new' %}">+Yangi Post qo'shish</a></div>
-  </header>
+    </header>
   <div>
+{% if user.is_authenticated %}
+<p>{{ user.username }}, Saytga xush kelibsiz</p>
+<p><a href="{% url 'logout'  %}">Saytdan chiqish</a></p>
+{% else %}
+<p>Siz saytga kirmagansiz</p>
+<a href="{% url 'login' %}">Log in</a>
+{% endif %}
     {% block content %}
 
     {% endblock content %}
   </div>
+
+
 </body>
 </html>
